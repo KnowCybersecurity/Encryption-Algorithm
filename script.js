@@ -70,7 +70,6 @@ function Encrypt(){
 
 }
 
-
 function Decrypt(){
     let Ciphertext_Input = document.getElementById("Ciphertext_Input").value;
     let SecretKey_Input = document.getElementById("SecretKey_Input").value;
