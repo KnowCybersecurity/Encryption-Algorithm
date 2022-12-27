@@ -16,7 +16,6 @@ function Encrypt(){
     Ciphertext_Output = "";
     for (let i = 0; i < Plaintext_Input.length; i++){
         Ciphertext_Output += SET2[i];
-
     }
 
     let Compteur = 0;
@@ -75,12 +74,10 @@ function Encrypt(){
 function Decrypt(){
     let Ciphertext_Input = document.getElementById("Ciphertext_Input").value;
     let SecretKey_Input = document.getElementById("SecretKey_Input").value;
-
     SecretKey_Input = SecretKey_Input.split("_");
 
     let Compteur = 0
     let C_Index_SET1 = [];
-
     for (let i = 0; i < Ciphertext_Input.length; i++){
         if (SET1.includes(Ciphertext_Input[i]) == true){
             for (let j = 0; j < SET1.length; j++){
@@ -97,14 +94,12 @@ function Decrypt(){
 
     let Plaintext_Output = "";
     let DecryptedLetterIndex = 0;
-
     for (let i = 0; i < C_Index_SET1.length; i++){
         DecryptedLetterIndex = C_Index_SET1[i] - SecretKey_Input[i];
         Plaintext_Output += SET1[DecryptedLetterIndex];
     }
 
     document.getElementById("Plaintext_Output").innerText = `Decrypted message: ${Plaintext_Output}`;
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
