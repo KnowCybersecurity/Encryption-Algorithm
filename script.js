@@ -1,14 +1,6 @@
 function Encrypt(){
 
-    Plaintext_Input = document.getElementById("Plaintext_Input").value;
-    Ciphertext_Output = "";
-
     SET2 = [];
-
-    ShiftValues = [];
-    SecretKey_Output = "";
-
-    // CREATE SET 2
     for (let i = 0; i < SET1.length; i++){
         let value = "true";
         while (value != "false"){
@@ -20,14 +12,15 @@ function Encrypt(){
         }
     }
 
-    // CREATE CIPHERTEXT
+    Plaintext_Input = document.getElementById("Plaintext_Input").value;
+    Ciphertext_Output = "";
     for (let i = 0; i < Plaintext_Input.length; i++){
         Ciphertext_Output += SET2[i];
+
     }
 
     let Compteur = 0;
     let C_Index = [];
-
     for (let i = 0; i < Ciphertext_Output.length; i++){
         if (SET1.includes(Ciphertext_Output[i]) == true){
             for (let j = 0; j < SET1.length; j++){
@@ -43,7 +36,6 @@ function Encrypt(){
     }
         
     let P_Index = [];
-
     for (let i = 0; i < Plaintext_Input.length; i++){
         if (SET1.includes(Plaintext_Input[i]) == true){
             for (let j = 0; j < SET1.length; j++){
@@ -58,14 +50,14 @@ function Encrypt(){
         }
     }
 
+    ShiftValues = [];
     let IndexDifference = 0;
-
     for (let i = 0; i < Ciphertext_Output.length; i++){
         IndexDifference = C_Index[i] - P_Index[i];
         ShiftValues.push(IndexDifference).toString();
     }
 
-    // CREATE SECRET KEY
+    SecretKey_Output = "";
     for (let i = 0; i < ShiftValues.length; i++){
         if (i == ShiftValues.length - 1){
             SecretKey_Output += `${ShiftValues[i]}`;
@@ -117,7 +109,7 @@ function Decrypt(){
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-const SET1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const SET1 = [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 let SET2 = [];
 
 let ShiftValues = [];
