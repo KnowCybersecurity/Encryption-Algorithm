@@ -1,0 +1,33 @@
+button {
+    margin-top: 5px;
+    width: 508px;
+}
+
+input {
+    margin-top: 5px;
+    width: 500px;
+}
+
+h1 {
+    line-height: 0px;
+    padding-top: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+}
+
+h3 {
+    line-height: 0px;
+    padding-bottom: 4px;
+    padding-top: 2px;
+}
+
+#Watermark {
+    padding-bottom: 5px;
+    font-size: large;
+}
+
+html {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 50px;
+    text-align: center;
+}
