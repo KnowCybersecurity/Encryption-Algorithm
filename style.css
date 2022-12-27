@@ -10,9 +10,9 @@ input {
 
 h1 {
     line-height: 0px;
-    padding-top: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 40px;
+    padding-top: 5px;
 }
 
 h3 {
@@ -45,8 +45,8 @@ html {
     }
     
     h1 {
-        line-height: 0px;
-        padding-top: 10%;
+        padding-top: 5px;
+        word-wrap:normal;
     }
     
     h3 {
