@@ -15,7 +15,11 @@ function Encrypt(){
     Plaintext_Input = document.getElementById("Plaintext_Input").value;
     Ciphertext_Output = "";
     for (let i = 0; i < Plaintext_Input.length; i++){
-        Ciphertext_Output += SET2[i];
+        if (SET2[Plaintext_Input.length - 1] == " " || SET2[0] == " "){
+            Ciphertext_Output += "_";
+        } else {
+            Ciphertext_Output += SET2[i];
+        }
     }
 
     let Compteur = 0;
@@ -61,19 +65,18 @@ function Encrypt(){
         if (i == ShiftValues.length - 1){
             SecretKey_Output += `${ShiftValues[i]}`;
         } else {
-            SecretKey_Output += `${ShiftValues[i]}_`;
+            SecretKey_Output += `${ShiftValues[i]}&`;
         }
     }
 
     document.getElementById("Ciphertext_Output").innerText = `Encrypted message:\n${Ciphertext_Output}`;
     document.getElementById("SecretKey_Output").innerText = `Secret Key:\n${SecretKey_Output}`;
-
 }
 
 function Decrypt(){
     let Ciphertext_Input = document.getElementById("Ciphertext_Input").value;
     let SecretKey_Input = document.getElementById("SecretKey_Input").value;
-    SecretKey_Input = SecretKey_Input.split("_");
+    SecretKey_Input = SecretKey_Input.split("&");
 
     let Compteur = 0
     let C_Index_SET1 = [];
