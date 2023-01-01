@@ -16,7 +16,7 @@ function Encrypt(){
     Ciphertext_Output = "";
     for (let i = 0; i < Plaintext_Input.length; i++){
         if (SET2[Plaintext_Input.length - 1] == " " || SET2[0] == " "){
-            Ciphertext_Output += "_";
+            Ciphertext_Output += "0";
         } else {
             Ciphertext_Output += SET2[i];
         }
@@ -65,7 +65,7 @@ function Encrypt(){
         if (i == ShiftValues.length - 1){
             SecretKey_Output += `${ShiftValues[i]}`;
         } else {
-            SecretKey_Output += `${ShiftValues[i]}&`;
+            SecretKey_Output += `${ShiftValues[i]}θ`;
         }
     }
 
@@ -76,7 +76,7 @@ function Encrypt(){
 function Decrypt(){
     let Ciphertext_Input = document.getElementById("Ciphertext_Input").value;
     let SecretKey_Input = document.getElementById("SecretKey_Input").value;
-    SecretKey_Input = SecretKey_Input.split("&");
+    SecretKey_Input = SecretKey_Input.split("θ");
 
     let Compteur = 0
     let C_Index_SET1 = [];
