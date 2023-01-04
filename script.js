@@ -13,64 +13,72 @@ function Encrypt(){
     }
 
     Plaintext_Input = document.getElementById("Plaintext_Input").value;
-    Ciphertext_Output = "";
-    for (let i = 0; i < Plaintext_Input.length; i++){
-        if (SET2[Plaintext_Input.length - 1] == " " || SET2[0] == " "){
-            Ciphertext_Output += "0";
-        } else {
-            Ciphertext_Output += SET2[i];
-        }
-    }
+    if (Plaintext_Input.length > SET1.length){
+        let SET1_Length = SET1.length;
+        let Plaintext_Length = Plaintext_Input.length;
 
-    let Compteur = 0;
-    let C_Index = [];
-    for (let i = 0; i < Ciphertext_Output.length; i++){
-        if (SET1.includes(Ciphertext_Output[i]) == true){
-            for (let j = 0; j < SET1.length; j++){
-                if (SET1[j] === Ciphertext_Output[i]){
-                    C_Index.push(Compteur);
-                    Compteur = 0
-                    break;
-                } else {
-                    Compteur += 1;
+        document.getElementById("Ciphertext_Output").innerText = `ERROR: Your message is too long (${Plaintext_Length} characters)`;
+        document.getElementById("SecretKey_Output").innerText = `Please enter a message that's equal or lower to ${SET1_Length} characters`;
+    } else {
+        Ciphertext_Output = "";
+        for (let i = 0; i < Plaintext_Input.length; i++){
+            if (SET2[Plaintext_Input.length - 1] == " " || SET2[0] == " "){
+                Ciphertext_Output += "0";
+            } else {
+                Ciphertext_Output += SET2[i];
+            }
+        }
+
+        let Compteur = 0;
+        let C_Index = [];
+        for (let i = 0; i < Ciphertext_Output.length; i++){
+            if (SET1.includes(Ciphertext_Output[i]) == true){
+                for (let j = 0; j < SET1.length; j++){
+                    if (SET1[j] === Ciphertext_Output[i]){
+                        C_Index.push(Compteur);
+                        Compteur = 0
+                        break;
+                    } else {
+                        Compteur += 1;
+                    }
                 }
             }
         }
-    }
-        
-    let P_Index = [];
-    for (let i = 0; i < Plaintext_Input.length; i++){
-        if (SET1.includes(Plaintext_Input[i]) == true){
-            for (let j = 0; j < SET1.length; j++){
-                if (SET1[j] === Plaintext_Input[i]){
-                    P_Index.push(Compteur);
-                    Compteur = 0;
-                    break;
-                } else {
-                    Compteur += 1;
+            
+        let P_Index = [];
+        for (let i = 0; i < Plaintext_Input.length; i++){
+            if (SET1.includes(Plaintext_Input[i]) == true){
+                for (let j = 0; j < SET1.length; j++){
+                    if (SET1[j] === Plaintext_Input[i]){
+                        P_Index.push(Compteur);
+                        Compteur = 0;
+                        break;
+                    } else {
+                        Compteur += 1;
+                    }
                 }
             }
         }
-    }
 
-    ShiftValues = [];
-    let IndexDifference = 0;
-    for (let i = 0; i < Ciphertext_Output.length; i++){
-        IndexDifference = C_Index[i] - P_Index[i];
-        ShiftValues.push(IndexDifference).toString();
-    }
-
-    SecretKey_Output = "";
-    for (let i = 0; i < ShiftValues.length; i++){
-        if (i == ShiftValues.length - 1){
-            SecretKey_Output += `${ShiftValues[i]}`;
-        } else {
-            SecretKey_Output += `${ShiftValues[i]}θ`;
+        ShiftValues = [];
+        let IndexDifference = 0;
+        for (let i = 0; i < Ciphertext_Output.length; i++){
+            IndexDifference = C_Index[i] - P_Index[i];
+            ShiftValues.push(IndexDifference).toString();
         }
-    }
+
+        SecretKey_Output = "";
+        for (let i = 0; i < ShiftValues.length; i++){
+            if (i == ShiftValues.length - 1){
+                SecretKey_Output += `${ShiftValues[i]}`;
+            } else {
+                SecretKey_Output += `${ShiftValues[i]}θ`;
+            }
+        }
 
     document.getElementById("Ciphertext_Output").innerText = `Encrypted message:\n${Ciphertext_Output}`;
     document.getElementById("SecretKey_Output").innerText = `Secret Key:\n${SecretKey_Output}`;
+    }
 }
 
 function Decrypt(){
